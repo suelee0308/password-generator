@@ -10,20 +10,18 @@ var generateBtn = document.querySelector("#generate");
 
 // }
 
-// var generatePassword = function() {
-
-//   return;
-// }
 
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", generate);
+generateBtn.addEventListener("click", generatePassword);
 
-// Declare variables as strings
-var number = ['1', '2', '3', '4', 567890];
-var upper = "QWERTYUIOPASDFGHJKLZXCVBNM";
-var lower = "qwertyuiopasdfghjklzxcvbnm"
-var symbol = "!@#$%^&*?.";
+// Declare variables as an array of strings
+var number = "1234567890".split("")
+var upper = "QWERTYUIOPASDFGHJKLZXCVBNM".split("");
+var lower = "qwertyuiopasdfghjklzxcvbnm".split("")
+var symbol = "!@#$%^&*?.,".split("")
+console.log(number);
+console.log(typeof lower);
 
 // Declare user choices as false, because if true later, then it's "activated"
 var numberChoice = false;
@@ -31,11 +29,14 @@ var upperChoice = false;
 var lowerChoice = false;
 var symbolChoice = false;
 
+// Declare password variable to use to display in textbox
+// var pwd = 
 
 // Button clicked brings up prompt window
-var chosenLength = ""
-function generate() {
-// Variable of character length created by user input after parameters are set. Loops if user input does not meet 8-128 criteria.
+// var chosenLength = "" ERASE LATER IF NOT USED!
+function generatePassword() {
+// Variable of character length created by user input.
+// Loops if user input does not meet 8-128 criteria or is not a number = null.
   var length = ""
     while (isNaN(length) || length < 8 || length > 128) {
       length = prompt ("Choose a number between 8-128 for the length of your password.");
@@ -46,40 +47,80 @@ function generate() {
       console.log (length);
       console.log (typeof length);
 // Change user choice variables if user selects them to be in their password
-    if (length) {
-      if (confirm("Do you want your password to contain NUMBERS?")){
-        numberChoice = true;
-      }
+   numberChoice = confirm("Do you want your password to contain NUMBERS?");
+      
+console.log(length)
+console.log(numberChoice)
 
-      if (confirm("Do you want your password to contain UPPERCASE LETTERS?")){
-        upperChoice = true;
-      }
+  upperChoice = confirm("Do you want your password to contain UPPERCASE LETTERS?");
 
-      if (confirm("Do you want your password to contain LOWERCASE LETTERS?")){
-        lowerChoice = true;
-      }
+console.log(length)
+console.log(upperChoice)
 
-      if (confirm("Do you want your password to contain SPECIAL CHARACTERS/SYMBOLS?")){
-        symbolChoice = true;
-      }
+    lowerChoice = confirm( "Do you want your password to contain LOWERCASE LETTERS?");
+      
+console.log(length)
+console.log(lowerChoice)
 
-      if (numberChoice === false && upperChoice === false && lowerChoice === false && symbolChoice === false){
+  symbolChoice = confirm("Do you want your password to contain SPECIAL CHARACTERS/SYMBOLS?");
+      
+console.log(length)
+console.log(symbolChoice)
+
+// If all choiced are false, then make them start over. 
+ numberChoice === false && upperChoice === false && lowerChoice === false && symbolChoice === false
         alert("At least one of the criteria's must be selected. Please start over.")
-      }
+    
+// Determind length by making length into a value, not a string
+  var lengthValue = length * 1;
+  console.log(typeof lengthValue);
+
+// Determine all characters that can be used in array placeholder
+  var charAvail = [];
+  
+    if (numberChoice === true) {
+      charAvail.concat(number);
+      charAvail =  charAvail.concat(number);
     }
+
+    if (upperChoice === true) {
+      charAvail.concat(upper);
+      charAvail =  charAvail.concat(upper);
+    }
+
+    if (lowerChoice === true) {
+      charAvail.concat(lower);
+      charAvail =  charAvail.concat(lower);
+    }
+
+    if(symbolChoice === true) {
+      charAvail.concat(lower);
+      charAvail =  charAvail.concat(symbol);
+    }
+
+  
+  console.log(charAvail)
+  
+// password var that is an array placeholder
+// Create for loop to insert an available character to each index of the password. Set number of indexes in the password with an array using length's value
+  var pwd = [];
+  function password(l, charAvail) {
+
+// For each index, input one randomly chosen character
+    for (let i = 0; i <= lengthValue; i++)
+    pwd += userChar(Math.floor(Math.random(charAvail) * lengthValue));
+  password (lengthValue)
+  console.log(password);
+}
+  console.log (pwd);
+  
+return pwd;
 }
 
-// Make length into a value, not a string
-var lengthValue = chosenLength * 1;
-console.log(typeof lengthValue);
-
-// Set number of indexes in the password with an array
-
-// For each index, input one randomi chosen character
-
-// Result should be a random password
 
 
+// For each index, input one randomly chosen character
 
-// var upper = "QWERTYUIOPASDFGHJKLZXCVBNM";
-// console.log (upper)
+// Result should be a randomly generated password
+
+// Display generated password to browser

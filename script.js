@@ -1,25 +1,16 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-
-//   passwordText.value = password;
-
-// }
-
-
-
 // Add event listener to generate button
-generateBtn.addEventListener("click", generatePassword);
+
+// Button clicked brings up prompt window
+generateBtn.addEventListener("click", writePassword);
 
 // Declare variables as an array of strings
 var number = "1234567890".split("")
 var upper = "QWERTYUIOPASDFGHJKLZXCVBNM".split("");
 var lower = "qwertyuiopasdfghjklzxcvbnm".split("")
-var symbol = "!@#$%^&*?.,".split("")
+var symbol = "!@#$%^&*?.".split("")
 console.log(number);
 console.log(typeof lower);
 
@@ -30,10 +21,9 @@ var lowerChoice = false;
 var symbolChoice = false;
 
 // Declare password variable to use to display in textbox
-// var pwd = 
+var password = [];
 
-// Button clicked brings up prompt window
-// var chosenLength = "" ERASE LATER IF NOT USED!
+
 function generatePassword() {
 // Variable of character length created by user input.
 // Loops if user input does not meet 8-128 criteria or is not a number = null.
@@ -46,6 +36,7 @@ function generatePassword() {
     }
       console.log (length);
       console.log (typeof length);
+
 // Change user choice variables if user selects them to be in their password
    numberChoice = confirm("Do you want your password to contain NUMBERS?");
       
@@ -67,11 +58,11 @@ console.log(lowerChoice)
 console.log(length)
 console.log(symbolChoice)
 
-// If all choiced are false, then make them start over. 
- numberChoice === false && upperChoice === false && lowerChoice === false && symbolChoice === false
-        alert("At least one of the criteria's must be selected. Please start over.")
+  // If all choices are false, then make them start over. 
+  if (numberChoice === false && upperChoice === false && lowerChoice === false && symbolChoice === false) {
+    alert("At least one of the criteria's must be selected. Please start over.")};
     
-// Determind length by making length into a value, not a string
+// Determin length by making length into a value, not a string
   var lengthValue = length * 1;
   console.log(typeof lengthValue);
 
@@ -98,29 +89,41 @@ console.log(symbolChoice)
       charAvail =  charAvail.concat(symbol);
     }
 
-  
   console.log(charAvail)
-  
+
+
 // password var that is an array placeholder
-// Create for loop to insert an available character to each index of the password. Set number of indexes in the password with an array using length's value
-  var pwd = [];
-  function password(l, charAvail) {
-
-// For each index, input one randomly chosen character
-    for (let i = 0; i <= lengthValue; i++)
-    pwd += userChar(Math.floor(Math.random(charAvail) * lengthValue));
-  password (lengthValue)
-  console.log(password);
-}
-  console.log (pwd);
+// Create for loop to insert an available character to each index of the password.
+// Set number of indexes in the password with an array using length's value
   
-return pwd;
-}
-
-
+  var password = [];
+  function passChar(lengthValue, charAvail) {
 
 // For each index, input one randomly chosen character
+    for (var i = 0; i < lengthValue; i++){
+    password.push(charAvail[Math.floor(Math.random() * charAvail.length)]);
+  }
+  }
+
+  // Call function
+  passChar(lengthValue, charAvail);
+
+  console.log(password);
+
+// Get rid of commas between the array showing
+  password = password.join('');
+
+//Take password generated out of function 
+return password;
+
+}
 
 // Result should be a randomly generated password
 
-// Display generated password to browser
+// // Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+}

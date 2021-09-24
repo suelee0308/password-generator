@@ -15,3 +15,7 @@
 
 6. Split string instead of me separating each in an array: https://www.w3schools.com/jsref/jsref_split.asp
 
+7. Joining array into a string: https://stackoverflow.com/questions/12132178/using-join-method-to-convert-array-to-string-without-commas/12132215
+
+## #Shoutout:
+1. Classmates- Ethan, Damien and Chuck helped talk me through my last function and changing it to an array.

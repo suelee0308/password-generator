@@ -1,6 +1,16 @@
 # password-generator
 
- 
+ ## User Story:
+ As an employee with access to sensitive data, I wasnt to randomly generate a password that meets certain criteria so that I can create a strong password that provides greater security. 
+
+ ## Criteria:
+
+ 1. The password is between 8-128 characters long
+
+ And
+
+2. The password contains at least one of the following character types: number, lowercase, uppercase, special character
+
 
 ## Resources used:
 1. Adding event listener: https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_onclick_addeventlistener
@@ -17,5 +27,14 @@
 
 7. Joining array into a string: https://stackoverflow.com/questions/12132178/using-join-method-to-convert-array-to-string-without-commas/12132215
 
+
 ## #Shoutout:
-1. Classmates- Ethan, Damien and Chuck helped talk me through my last function and changing it to an array.
+1. Classmates - Ethan, Damien and Chuck - helped talk me through my last function and changing it to an array.
+
+
+## Links
+gitHub: https://github.com/suelee0308/password-generator
+Deployed website: https://suelee0308.github.io/password-generator/ 
+
+## Screenshot of deployed website:
+
